@@ -8,7 +8,16 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 
 
 self.addEventListener('install', event => {
-    console.log('sw install');
+    console.log('sw install...');
+    
+    const asyncInstall = new Promise(resolve => {
+        console.log('waiting to resolve..')
+
+        setTimeout(resolve, 5000);
+    });
+
+    //important to resolve/reject else sw wont be activate
+    event.waitUntil(asyncInstall);
 })
 
 self.addEventListener('activate', event => {
