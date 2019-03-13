@@ -10,17 +10,17 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest || []);
 //cache external resources
 workbox.routing.registerRoute(
     new RegExp('https?://.*min\.(css|js)'),
-    workbox.strategoes.networkFirst() //added to runtime cache
+    workbox.strategies.networkFirst() //added to runtime cache
 )
 
 //cache json endpoint
-workbox.routing.registerRoute(
-    new RegExp('https?://.*:4567.*\.json'),
-    new RegExp('/.*\.json'),
-    workbox.strategoes.networkFirst({
-        cacheName: 'json-cache'
-    })
-)
+// workbox.routing.registerRoute(
+//     new RegExp('https?://.*:4567.*\.json'),
+//     new RegExp('/.*\.json'),
+//     workbox.strategies.networkFirst({
+//         cacheName: 'json-cache'
+//     })
+// )
 
 self.addEventListener('install', event => {
     console.log('sw install...');
